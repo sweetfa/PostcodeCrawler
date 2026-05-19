@@ -10,7 +10,6 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '9.0.x' # set this to the dotnet version to use
 
 jobs:
@@ -31,7 +30,7 @@ jobs:
         shell: pwsh
         run: |
           dotnet restore --no-cache
-          dotnet build
+          dotnet build --configuration Release
           dotnet publish PostcodeCrawler/PostcodeCrawler.csproj --configuration Release --output ./output --no-build --no-dependencies
       
  
